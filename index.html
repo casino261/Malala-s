@@ -3,137 +3,611 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#130b08">
-<title>NGWIN Tiger Gold</title>
+<meta name="theme-color" content="#120704">
+<title>NGWIN — Fire Tiger</title>
+
 <style>
-:root{--gold:#ffcf58;--orange:#f57b24;--dark:#130b08;--panel:#28150f}
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#57240f 0,#1c100b 48%,#090706 100%);color:#fff4d5;font-family:system-ui,-apple-system,sans-serif;min-height:100vh}
-header{padding:18px 15px;text-align:center;border-bottom:1px solid #d69b3650;background:#100906cc}
-.logo{font-weight:1000;font-size:clamp(25px,7vw,40px);letter-spacing:2px;color:var(--gold);text-shadow:0 2px 18px #ff8b26a0}
-.logo span{color:#fff}
-.tagline{font-size:11px;letter-spacing:3px;color:#e9b987;margin-top:3px}
-main{max-width:680px;margin:auto;padding:18px 13px 35px}
-.notice{font-size:12px;text-align:center;color:#e9caa5;background:#ffffff09;border:1px solid #ffcf5833;padding:10px;border-radius:10px;margin-bottom:17px}
-.machine{border:2px solid #d89b39;border-radius:22px;padding:15px;background:linear-gradient(145deg,#54210f,#21100b 65%);box-shadow:0 12px 45px #0009,inset 0 0 20px #ffcf5815}
-.game-title{text-align:center;color:var(--gold);font-size:22px;font-weight:900;letter-spacing:1px}
-.game-subtitle{text-align:center;color:#e5b991;font-size:12px;margin:4px 0 15px}
-.tiger{text-align:center;font-size:65px;filter:drop-shadow(0 4px 10px #ff941e55);line-height:1.2}
-.reels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;background:#0d0806;border:2px solid #b97a2b;border-radius:13px;padding:7px;margin:14px 0}
-.reel{height:90px;min-width:0;border-radius:7px;background:linear-gradient(#fff2d9,#e8bd72,#fff0cf);display:flex;align-items:center;justify-content:center;font-size:clamp(26px,7vw,42px);box-shadow:inset 0 0 9px #6c300c;transition:transform .15s}
-.reel.spinning{animation:shake .12s linear infinite}
-@keyframes shake{0%{transform:translateY(-3px)}50%{transform:translateY(3px)}100%{transform:translateY(-3px)}}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.stat{background:#100906b8;border:1px solid #e9ac4a50;padding:10px;border-radius:10px;text-align:center}
-.stat label{display:block;color:#cba886;font-size:11px;text-transform:uppercase;letter-spacing:1px}
-.stat strong{display:block;color:var(--gold);font-size:22px;margin-top:3px}
-.controls{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}
-button,select{font:inherit;border-radius:10px;min-height:46px}
-button{border:0;cursor:pointer;font-weight:850}
-button:disabled{opacity:.45;cursor:not-allowed}
-.bet-control{display:flex;align-items:center;justify-content:space-between;gap:7px;background:#100906;border:1px solid #d89b3955;padding:7px 9px;border-radius:10px}
-.bet-control span{font-size:12px;color:#e9caa5}
-select{width:90px;background:#2b170e;color:#ffda7c;border:1px solid #b87b31;padding:6px}
-.spin{grid-column:1/-1;min-height:57px;background:linear-gradient(100deg,#ffb52e,#ffe48b,#f28b1c);color:#351405;font-size:20px;letter-spacing:2px;box-shadow:0 5px 20px #ff9b2940}
-.secondary{background:#452317;border:1px solid #d69b3660;color:#ffe3b0}
-.message{min-height:49px;margin-top:12px;border-radius:10px;background:#100906b8;padding:13px;text-align:center;color:#ffe4a2;font-weight:700;font-size:14px}
-.paytable{margin-top:16px;padding:13px;background:#160d09;border:1px solid #d69b363b;border-radius:12px}
-.paytable h3{margin:0 0 10px;color:var(--gold);font-size:15px}
-.payrow{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid #ffffff12;font-size:13px}
-.payrow:last-child{border:0}
-.small{font-size:11px;color:#c5a58a;line-height:1.6;margin-top:12px}
-footer{text-align:center;color:#9f8066;font-size:11px;padding:20px}
-@media(max-width:380px){.reel{height:72px}.reels{gap:3px;padding:5px}.machine{padding:10px}.tiger{font-size:54px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition:none!important}}
+:root {
+  --gold: #ffd36a;
+  --orange: #ff641d;
+  --dark: #100603;
+  --panel: #261008;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #fff3d5;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 15%, #76220b 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 80%, #3c1006 0%, transparent 45%),
+    #100603;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .25;
+  background:
+    radial-gradient(circle at 15% 25%, #ffb22c 1px, transparent 3px),
+    radial-gradient(circle at 85% 40%, #ff4c10 2px, transparent 4px),
+    radial-gradient(circle at 40% 70%, #ffb22c 1px, transparent 3px);
+  background-size: 95px 110px, 125px 135px, 80px 95px;
+  animation: embers 5s linear infinite;
+}
+
+@keyframes embers {
+  from { transform: translateY(0); }
+  to { transform: translateY(-35px); }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 5%;
+  border-bottom: 1px solid #8f4b1d;
+  background: rgba(12, 5, 2, .88);
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 1000;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-shadow: 0 0 18px #ff6a16;
+}
+
+.logo span {
+  color: white;
+}
+
+.demo-tag {
+  border: 1px solid #b47a35;
+  border-radius: 20px;
+  padding: 7px 11px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--gold);
+}
+
+main {
+  width: min(100% - 24px, 520px);
+  margin: 22px auto 30px;
+  position: relative;
+}
+
+.hero {
+  text-align: center;
+  padding: 5px 0 20px;
+}
+
+.eyebrow {
+  color: #ff9c43;
+  font-size: 11px;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: clamp(38px, 10vw, 64px);
+  line-height: .95;
+  margin: 12px 0;
+  font-weight: 1000;
+  font-style: italic;
+  letter-spacing: -2px;
+  color: #ffcb55;
+  background: linear-gradient(#fff7c9 0%, #ffcf56 35%, #ff681d 75%, #a92408 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 5px 0 #421006);
+}
+
+.subtitle {
+  color: #f4c7a0;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.game-frame {
+  padding: 5px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fff0a0, #a65717 20%, #ffcf60 40%, #59200c 65%, #e8a13b 85%, #54200a);
+  box-shadow: 0 0 30px #e94c123d, 0 18px 40px #0009;
+}
+
+.game-inner {
+  padding: 18px 12px;
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse at 50% 0%, #65200b, transparent 65%),
+    linear-gradient(180deg, #210a05, #100603);
+  border: 1px solid #7b3d17;
+}
+
+.tiger-art {
+  text-align: center;
+  font-size: 76px;
+  line-height: 1.1;
+  padding: 4px 0 10px;
+  filter: drop-shadow(0 0 15px #ff681d);
+  animation: tigerGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes tigerGlow {
+  from { filter: drop-shadow(0 0 8px #ff681d); }
+  to { filter: drop-shadow(0 0 25px #ffb62f); }
+}
+
+.reels {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 5px;
+  padding: 8px;
+  border: 2px solid #b67b2d;
+  border-radius: 10px;
+  background: #090403;
+  box-shadow: inset 0 0 20px #000;
+}
+
+.reel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.symbol {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1.15;
+  border-radius: 7px;
+  font-size: clamp(25px, 7vw, 39px);
+  background: linear-gradient(145deg, #49200e, #1d0a05);
+  border: 1px solid #7e4c23;
+  box-shadow: inset 0 0 12px #0007;
+}
+
+.symbol.winner {
+  background: linear-gradient(145deg, #fff1a1, #ff9e20);
+  border-color: white;
+  animation: winPulse .5s infinite alternate;
+}
+
+@keyframes winPulse {
+  from { box-shadow: 0 0 5px #ffb52e; }
+  to { box-shadow: 0 0 22px #ff6b16; }
+}
+
+.game-message {
+  min-height: 40px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.stat {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #633418;
+  border-radius: 9px;
+  background: #170804;
+}
+
+.stat-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #c28a53;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  color: var(--gold);
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.controls {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.bet-control {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 8px;
+  color: #e8c8a0;
+  font-size: 12px;
+}
+
+.small-btn {
+  width: 38px;
+  height: 35px;
+  border-radius: 7px;
+  border: 1px solid #b27a31;
+  background: #321307;
+  color: var(--gold);
+  font-size: 21px;
+  font-weight: bold;
+}
+
+#spin {
+  grid-column: 1 / -1;
+  width: 100%;
+  padding: 17px 10px;
+  border: 2px solid #ffe59b;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffbd39, #f35a12 65%, #a82b09);
+  color: #2a0b02;
+  font-size: 23px;
+  font-weight: 1000;
+  letter-spacing: 3px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #712008, 0 0 20px #ff6b1d55;
+  text-shadow: 0 1px #ffe8a3;
+}
+
+#spin:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #712008;
+}
+
+#spin:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+#reset {
+  grid-column: 1 / -1;
+  background: transparent;
+  color: #d7a879;
+  border: 1px solid #61331b;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.info {
+  margin-top: 18px;
+  padding: 15px;
+  border: 1px solid #492413;
+  border-radius: 10px;
+  background: #160804c9;
+  color: #caa787;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.info h2 {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+footer {
+  text-align: center;
+  color: #92694b;
+  font-size: 10px;
+  line-height: 1.7;
+  padding: 22px 10px;
+}
+
+@media (min-width: 600px) {
+  main { margin-top: 35px; }
+  .game-inner { padding: 22px; }
+}
 </style>
 </head>
+
 <body>
+
 <header>
   <div class="logo">NG<span>WIN</span></div>
-  <div class="tagline">PLAY BOLD · DREAM GOLD</div>
+  <div class="demo-tag">VIRTUAL DEMO</div>
 </header>
+
 <main>
-  <div class="notice">DEMO MODE · Virtual credits only · No real-money deposits or withdrawals</div>
-  <section class="machine">
-    <div class="game-title">🐯 TIGER GOLD</div>
-    <div class="game-subtitle">MODERN EDITION · ORIGINAL DEMO GAME</div>
-    <div class="tiger" aria-label="Tiger">🐯</div>
-    <div class="reels" aria-label="Five slot reels">
-      <div class="reel">🐯</div><div class="reel">💎</div><div class="reel">🪙</div><div class="reel">🍀</div><div class="reel">🐯</div>
-    </div>
-    <div class="stats">
-      <div class="stat"><label>Demo credits</label><strong id="balance">1000</strong></div>
-      <div class="stat"><label>Last win</label><strong id="lastWin">0</strong></div>
-    </div>
-    <div class="controls">
-      <div class="bet-control"><span>BET</span><select id="bet" aria-label="Choose virtual bet"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></div>
-      <button class="secondary" id="reset" type="button">RESET DEMO</button>
-      <button class="spin" id="spin" type="button">▶ SPIN</button>
-    </div>
-    <div class="message" id="message" aria-live="polite">Ready to play? Press SPIN!</div>
-    <div class="paytable">
-      <h3>✨ DEMO PAYTABLE</h3>
-      <div class="payrow"><span>🐯🐯🐯🐯🐯 Five tigers</span><strong>10× bet</strong></div>
-      <div class="payrow"><span>💎💎💎 Three diamonds</span><strong>5× bet</strong></div>
-      <div class="payrow"><span>🪙🪙🪙 Three coins</span><strong>3× bet</strong></div>
-      <div class="payrow"><span>Any other result</span><strong>No prize</strong></div>
-      <div class="small">Demo rules: all five matching tigers pay 10× the bet; three or more matching diamonds pay 5×; three or more matching coins pay 3×. Only the highest qualifying prize is awarded. Outcomes are generated for this demonstration and are not certified for real-money gaming.</div>
+  <section class="hero">
+    <div class="eyebrow">ENTER THE FLAMES</div>
+    <h1>FIRE TIGER</h1>
+    <div class="subtitle">FORTUNE • POWER • GOLD</div>
+  </section>
+
+  <section class="game-frame">
+    <div class="game-inner">
+
+      <div class="tiger-art" aria-label="Tiger">🐅</div>
+
+      <div class="reels" id="reels" aria-label="Five slot reels">
+        <div class="reel"></div>
+        <div class="reel"></div>
+        <div class="reel"></div>
+        <div class="reel"></div>
+        <div class="reel"></div>
+      </div>
+
+      <div class="game-message" id="message" aria-live="polite">
+        READY TO ENTER THE FLAMES?
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-label">VIRTUAL CREDITS</span>
+          <span class="stat-value" id="credits">1000</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">LAST WIN</span>
+          <span class="stat-value" id="lastWin">0</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="bet-control">
+          <button class="small-btn" id="minus" aria-label="Decrease bet">−</button>
+          <span>BET: <strong id="bet">10</strong></span>
+          <button class="small-btn" id="plus" aria-label="Increase bet">+</button>
+        </div>
+
+        <button id="spin">🔥 SPIN 🔥</button>
+        <button id="reset">RESET DEMO CREDITS</button>
+      </div>
+
     </div>
   </section>
-  <div class="small">This is an early playable prototype. Credits exist only in this page and have no cash value. Refreshing the page resets the demo. Real-money play requires server-side game results, security testing, an authorized game/payment setup, and applicable approvals.</div>
+
+  <section class="info">
+    <h2>🐅 HOW TO PLAY</h2>
+    <div>• Choose your virtual bet.</div>
+    <div>• Tap SPIN to play five reels.</div>
+    <div>• Matching symbols across the middle row earn virtual credits.</div>
+    <div>• Three or more tiger symbols on the middle row trigger a bonus payout.</div>
+    <div>• This demo uses virtual credits only. No deposits or withdrawals are available.</div>
+  </section>
 </main>
-<footer>NGWIN · TIGER GOLD · PROTOTYPE</footer>
+
+<footer>
+  NGWIN • FIRE TIGER DEMO<br>
+  Original themed prototype • Virtual credits only<br>
+  No real-money wagering or cash prizes
+</footer>
+
 <script>
-(function(){
-  const symbols=["🐯","💎","🪙","🍀","7️⃣","🔔"];
-  const reels=Array.from(document.querySelectorAll(".reel"));
-  const balanceEl=document.getElementById("balance");
-  const winEl=document.getElementById("lastWin");
-  const message=document.getElementById("message");
-  const spinBtn=document.getElementById("spin");
-  const betEl=document.getElementById("bet");
-  let balance=1000;
-  let busy=false;
-  function render(){balanceEl.textContent=balance; }
-  function payout(result,bet){
-    if(result.every(s=>s==="🐯")) return bet*10;
-    const counts={};
-    result.forEach(s=>counts[s]=(counts[s]||0)+1);
-    if((counts["💎"]||0)>=3)return bet*5;
-    if((counts["🪙"]||0)>=3)return bet*3;
-    return 0;
+(() => {
+  const symbols = [
+    { icon: "🐅", name: "Tiger", weight: 12, multiplier: 10 },
+    { icon: "💎", name: "Diamond", weight: 15, multiplier: 5 },
+    { icon: "👑", name: "Crown", weight: 17, multiplier: 4 },
+    { icon: "🔔", name: "Bell", weight: 19, multiplier: 3 },
+    { icon: "🪙", name: "Gold", weight: 21, multiplier: 2 },
+    { icon: "🍊", name: "Orange", weight: 25, multiplier: 2 },
+    { icon: "🔥", name: "Fire", weight: 22, multiplier: 3 }
+  ];
+
+  const reels = [...document.querySelectorAll(".reel")];
+  const spinButton = document.getElementById("spin");
+  const creditsDisplay = document.getElementById("credits");
+  const betDisplay = document.getElementById("bet");
+  const lastWinDisplay = document.getElementById("lastWin");
+  const message = document.getElementById("message");
+
+  let credits = 1000;
+  let bet = 10;
+  let busy = false;
+  let lastWin = 0;
+
+  function chooseSymbol() {
+    const total = symbols.reduce((sum, s) => sum + s.weight, 0);
+    let roll = Math.random() * total;
+
+    for (const symbol of symbols) {
+      roll -= symbol.weight;
+      if (roll < 0) return symbol;
+    }
+
+    return symbols[symbols.length - 1];
   }
-  function randomSymbol(){return symbols[Math.floor(Math.random()*symbols.length)];}
-  spinBtn.addEventListener("click",function(){
-    if(busy)return;
-    const bet=Number(betEl.value);
-    if(balance<bet){message.textContent="Not enough demo credits. Press RESET DEMO to start again.";return;}
-    busy=true;spinBtn.disabled=true;balance-=bet;render();winEl.textContent="0";
-    message.textContent="The reels are spinning…";
-    reels.forEach(r=>r.classList.add("spinning"));
-    const result=reels.map(()=>randomSymbol());
-    reels.forEach((reel,i)=>{
-      setTimeout(()=>{
-        reel.textContent=result[i];
-        reel.classList.remove("spinning");
-        if(i===reels.length-1){
-          const win=payout(result,bet);
-          balance+=win;winEl.textContent=String(win);render();
-          message.textContent=win>0?"🎉 You won "+win+" virtual credits!":"No win this time. Try another demo spin!";
-          if(result.every(s=>s==="🐯"))message.textContent="🐯 JACKPOT! Five tigers! You won "+win+" virtual credits!";
-          busy=false;spinBtn.disabled=false;
-        }
-      },350+i*250);
+
+  function updateStats() {
+    creditsDisplay.textContent = credits.toLocaleString();
+    betDisplay.textContent = bet;
+    lastWinDisplay.textContent = lastWin.toLocaleString();
+
+    document.getElementById("minus").disabled = busy || bet <= 10;
+    document.getElementById("plus").disabled = busy || bet >= 100;
+  }
+
+  function renderReels(results, clearWins = true) {
+    reels.forEach((reel, i) => {
+      reel.innerHTML = "";
+
+      results[i].forEach(symbol => {
+        const cell = document.createElement("div");
+        cell.className = "symbol";
+        cell.textContent = symbol.icon;
+        cell.title = symbol.name;
+        reel.appendChild(cell);
+      });
     });
+
+    if (clearWins) {
+      document.querySelectorAll(".symbol").forEach(el => {
+        el.classList.remove("winner");
+      });
+    }
+  }
+
+  function createRandomBoard() {
+    return reels.map(() => [
+      chooseSymbol(),
+      chooseSymbol(),
+      chooseSymbol()
+    ]);
+  }
+
+  function initialBoard() {
+    const board = createRandomBoard();
+    renderReels(board);
+  }
+
+  function evaluate(board) {
+    const middle = board.map(column => column[1]);
+    const counts = {};
+
+    middle.forEach(symbol => {
+      counts[symbol.name] = (counts[symbol.name] || 0) + 1;
+    });
+
+    const tigerCount = counts.Tiger || 0;
+    let payout = 0;
+    let winningName = "";
+
+    if (tigerCount >= 3) {
+      payout = bet * (tigerCount === 5 ? 100 : tigerCount === 4 ? 25 : 10);
+      winningName = "TIGER BONUS!";
+    } else {
+      const match = Object.entries(counts)
+        .filter(([, count]) => count >= 3)
+        .sort((a, b) => b[1] - a[1])[0];
+
+      if (match) {
+        const symbol = symbols.find(s => s.name === match[0]);
+        payout = bet * symbol.multiplier * (match[1] === 5 ? 3 : 1);
+        winningName = match[0].toUpperCase() + " WIN!";
+      }
+    }
+
+    return { payout, winningName, middle };
+  }
+
+  function highlightWinners(middle, winningName) {
+    if (!winningName) return;
+
+    reels.forEach((reel, i) => {
+      if (middle[i].name === winningName.split(" ")[0] ||
+          (winningName === "TIGER BONUS!" && middle[i].name === "Tiger")) {
+        reel.children[1].classList.add("winner");
+      }
+    });
+  }
+
+  function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async function spin() {
+    if (busy) return;
+
+    if (credits < bet) {
+      message.textContent = "NOT ENOUGH CREDITS — RESET THE DEMO";
+      return;
+    }
+
+    busy = true;
+    credits -= bet;
+    lastWin = 0;
+    updateStats();
+    spinButton.disabled = true;
+    message.textContent = "THE TIGER IS AWAKENING... 🔥";
+
+    const finalBoard = createRandomBoard();
+
+    for (let step = 0; step < 9; step++) {
+      const temporary = createRandomBoard();
+
+      reels.forEach((reel, i) => {
+        reel.innerHTML = "";
+
+        for (let row = 0; row < 3; row++) {
+          const cell = document.createElement("div");
+          cell.className = "symbol";
+          cell.textContent = chooseSymbol().icon;
+          reel.appendChild(cell);
+        }
+      });
+
+      await wait(70 + step * 12);
+    }
+
+    renderReels(finalBoard);
+    const result = evaluate(finalBoard);
+
+    lastWin = result.payout;
+    credits += result.payout;
+
+    if (result.payout > 0) {
+      message.textContent = "🔥 " + result.winningName + " +" +
+        result.payout.toLocaleString() + " CREDITS 🔥";
+      highlightWinners(result.middle, result.winningName);
+    } else {
+      message.textContent = "NO MATCH THIS TIME — TRY AGAIN!";
+    }
+
+    updateStats();
+    busy = false;
+    spinButton.disabled = false;
+
+    if (credits < bet) {
+      message.textContent += " — RESET DEMO CREDITS TO CONTINUE.";
+    }
+  }
+
+  document.getElementById("minus").addEventListener("click", () => {
+    if (!busy) {
+      bet = Math.max(10, bet - 10);
+      updateStats();
+    }
   });
-  document.getElementById("reset").addEventListener("click",function(){
-    if(busy)return;
-    balance=1000;render();winEl.textContent="0";
-    reels.forEach(r=>r.textContent=randomSymbol());
-    message.textContent="Demo reset. You have 1000 virtual credits.";
+
+  document.getElementById("plus").addEventListener("click", () => {
+    if (!busy) {
+      bet = Math.min(100, bet + 10);
+      updateStats();
+    }
   });
-  render();
+
+  document.getElementById("reset").addEventListener("click", () => {
+    if (busy) return;
+    credits = 1000;
+    bet = 10;
+    lastWin = 0;
+    message.textContent = "YOUR DEMO CREDITS HAVE BEEN RESET!";
+    updateStats();
+    initialBoard();
+  });
+
+  spinButton.addEventListener("click", spin);
+
+  initialBoard();
+  updateStats();
 })();
 </script>
+
 </body>
 </html>
